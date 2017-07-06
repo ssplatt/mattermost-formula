@@ -1,0 +1,28 @@
+# vim: ft=yaml
+---
+driver:
+  name: docker
+
+provisioner:
+  name: salt_solo
+  formula: mattermost
+  state_top:
+    base:
+      "*":
+        - mattermost
+
+platforms:
+  - name: debian-8
+
+suites:
+  - name: default
+
+  - name: custom
+    provisioner:
+      pillars-from-files:
+        mattermost.sls: pillar-custom.sls
+      pillars:
+        top.sls:
+          base:
+            "*":
+              - mattermost

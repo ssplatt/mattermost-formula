@@ -1,0 +1,17 @@
+{%- from "mattermost/map.jinja" import mattermost with context -%}
+# cat /etc/systemd/system/mattermost.service
+[Unit]
+Description=Mattermost
+After=network.target
+
+[Service]
+User=mattermost
+ExecStart=/opt/mattermost/bin/platform
+WorkingDirectory=/opt/mattermost
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
+# systemctl start mattermost
+# systemctl enable mattermost

@@ -1,0 +1,21 @@
+# vim: ft=yaml
+# Defaults for mattermost
+
+mattermost:
+  enabled: false
+  mockup: false
+  version: 2.1.0
+  hash: 2825434aad23db1181e03b036bd826e66d6d4f21d337d209679a095a3ed9a4d2
+  hostname: localhost
+  data_dir: /opt/mattermost/data
+  listen_address: :8065
+  service:
+    name: mattermost
+    state: dead
+    enable: false
+  db:
+    hostname: localhost
+    port: 3306
+    user: mmuser
+    password: mmuser_password
+    database: mattermost

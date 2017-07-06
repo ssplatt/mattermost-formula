@@ -1,0 +1,23 @@
+sudo: required
+dist: trusty
+language: ruby
+
+bundler_args: --without='vagrant linode'
+
+services:
+  - docker
+
+env:
+  matrix:
+  - INSTANCE=default
+  - INSTANCE=custom
+
+script:
+  - bundle exec docker version
+  - bundle exec kitchen --version
+  - KITCHEN_YAML=.kitchen-docker.yml kitchen test ${INSTANCE} -d always
+
+after_script:
+  - docker images
+  - docker ps -a
+  - cat .kitchen/logs/kitchen.log
