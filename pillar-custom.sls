@@ -8,4 +8,3 @@ mattermost:
     name: mattermost
     state: running
     enable: true
-

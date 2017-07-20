@@ -4,8 +4,8 @@
 mattermost:
   enabled: false
   mockup: false
-  version: 2.1.0
-  hash: 2825434aad23db1181e03b036bd826e66d6d4f21d337d209679a095a3ed9a4d2
+  version: 4.0.1
+  hash: 55591dcbba490617b5d754316d9c76515770e53146ac293c830704d8a55fc53a
   hostname: localhost
   data_dir: /opt/mattermost/data
   listen_address: :8065

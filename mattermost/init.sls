@@ -5,6 +5,9 @@
 
 {% if mattermost.enabled %}
 include:
+  {% if mattermost.mockup -%}
+  - mattermost.mockup
+  {%- endif %}
   - mattermost.install
   - mattermost.config
   - mattermost.service
@@ -12,4 +15,3 @@ include:
 'mattermost-formula disabled':
   test.succeed_without_changes
 {% endif %}
-

@@ -2,6 +2,7 @@
 ---
 driver:
   name: docker
+  image: debian:8
 
 provisioner:
   name: salt_solo
@@ -10,12 +11,23 @@ provisioner:
     base:
       "*":
         - mattermost
+  pillars:
+    top.sls:
+      base:
+        "*":
+          - mattermost
 
 platforms:
-  - name: debian-8
+  - name: debian
 
 suites:
   - name: default
+    provisioner:
+      pillars:
+        mattermost.sls:
+          mattermost:
+            enabled: true
+            mockup: true
 
   - name: custom
     provisioner:

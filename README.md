@@ -1,11 +1,9 @@
 # mattermost-formula
 
-Purpose of formula. Include a short description of what the formula does.
+Install and configure mattermost
 
 
-Describe in a readable form the states this formula supports with examples how to use those states.
-
-
+## Development
 Install and setup brew:
 ```
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

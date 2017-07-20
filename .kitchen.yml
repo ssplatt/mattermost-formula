@@ -2,8 +2,6 @@
 ---
 driver:
   name: vagrant
-  customize: 
-    memory: 1024
 
 provisioner:
   name: salt_solo
@@ -12,20 +10,25 @@ provisioner:
     base:
       "*":
         - mattermost
+  pillars:
+    top.sls:
+      base:
+        "*":
+          - mattermost
 
 platforms:
-  - name: bento/debian-8.3
+  - name: bento/debian-8.8
 
 suites:
   - name: default
+    provisioner:
+      pillars:
+        mattermost.sls:
+          mattermost:
+            enabled: true
+            mockup: true
 
   - name: custom
     provisioner:
       pillars-from-files:
         mattermost.sls: pillar-custom.sls
-      pillars:
-        top.sls:
-          base:
-            "*":
-              - mattermost
-
