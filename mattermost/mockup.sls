@@ -38,3 +38,15 @@ mattermost_mockup_nginx_config:
     - user: root
     - group: root
     - mode: 0644
+
+mattermost_mockup_db_service:
+  service.running:
+    - name: mysql
+    - enable: true
+
+mattermost_mockup_nginx_service:
+  service.running:
+    - name: nginx
+    - enable: true
+    - watch:
+      - file: mattermost_mockup_nginx_config

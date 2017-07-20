@@ -38,6 +38,8 @@ mattermost_systemd_service_file:
     - group: root
     - mode: 0644
     - makedirs: true
+    - watch_in:
+      - service: mattermost_service
 {% else %}
 mattermost_sysv_service_file:
   file.managed:
@@ -47,4 +49,6 @@ mattermost_sysv_service_file:
     - user: root
     - group: root
     - mode: 0755
+    - watch_in:
+      - service: mattermost_service
 {% endif %}
