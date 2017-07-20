@@ -19,11 +19,20 @@ describe file('/opt/mattermost/config/config.json') do
   its(:content) { should match /"Directory": "\/opt\/mattermost\/data",/ }
 end
 
-describe file('/usr/lib/systemd/system/mattermost.service') do
-  it { should be_file }
-  it { should be_owned_by 'root' }
-  it { should be_grouped_into 'root' }
-  it { should be_mode 644 }
+if host_inventory['virtualization'][:system] == "vbox"
+  describe file('/usr/lib/systemd/system/mattermost.service') do
+    it { should be_file }
+    it { should be_owned_by 'root' }
+    it { should be_grouped_into 'root' }
+    it { should be_mode 644 }
+  end
+else
+  describe file('/etc/init.d/mattermost') do
+    it { should be_file }
+    it { should be_owned_by 'root' }
+    it { should be_grouped_into 'root' }
+    it { should be_mode 755 }
+  end
 end
 
 describe service('mattermost') do
