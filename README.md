@@ -1,7 +1,9 @@
 # mattermost-formula
+[![Build Status](https://travis-ci.org/ssplatt/mattermost-formula.svg?branch=master)](https://travis-ci.org/ssplatt/mattermost-formula)
 
 Install and configure mattermost
 
+ - https://about.mattermost.com/
 
 ## Development
 Install and setup brew:
