@@ -15,21 +15,6 @@ mattermost_mockup_pkgs:
       - mariadb-server
       - nginx
 
-mattermost_mockup_database_user:
-  mysql_user.present:
-    - name: {{ mattermost.db.user }}
-    - password: {{ mattermost.db.password }}
-
-mattermost_mockup_database_db:
-  mysql_database.present:
-    - name: {{ mattermost.db.database }}
-
-mattermost_mockup_database_query:
-  mysql_grants.present:
-    - grant: all privileges
-    - database: {{ mattermost.db.database }}.*
-    - user: {{ mattermost.db.user }}
-
 mattermost_mockup_nginx_config:
   file.managed:
     - name: /etc/nginx/sites-enabled/mattermost
@@ -50,3 +35,18 @@ mattermost_mockup_nginx_service:
     - enable: true
     - watch:
       - file: mattermost_mockup_nginx_config
+
+mattermost_mockup_database_user:
+  mysql_user.present:
+    - name: {{ mattermost.db.user }}
+    - password: {{ mattermost.db.password }}
+
+mattermost_mockup_database_db:
+  mysql_database.present:
+    - name: {{ mattermost.db.database }}
+
+mattermost_mockup_database_query:
+  mysql_grants.present:
+    - grant: all privileges
+    - database: {{ mattermost.db.database }}.*
+    - user: {{ mattermost.db.user }}
